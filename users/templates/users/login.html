@@ -1,0 +1,45 @@
+{% extends "newsfeed/layout.html" %}
+{% load crispy_forms_tags %} 
+{% load static %}
+{% block content %}
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-9 col-lg-7 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center"><b>Login</b></h5>
+          <form class="form-signin" method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+              <br />
+              <label>Phone</label>
+              <input type="phone"  class="form-control" name="phone" placeholder="Phone Number" required autofocus>
+              <br>
+              <label>Password</label>
+              <input type="password"  class="form-control" name="password" placeholder="Password" required>
+                {%if msg%} 
+                {{msg}}
+                {%endif%}
+            </fieldset>
+            <div class="form-group">
+              <button
+                class="btn btn-lg btn-primary btn-block text-uppercase"
+                type="submit"
+              >
+                Log In</button
+              ><br /><br />
+            </div>
+            <small
+              ><p class="text-center">
+                If Not Registered!
+                <a href="{% url 'register' %}"><b>Register Now!</b></a>
+              </p></small
+            >
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
